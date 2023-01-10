@@ -1,0 +1,29 @@
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:prowriting/prowritingaid.php.git"
+    }
+  ],
+  "require": {
+    "php": ">=5.5",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "guzzlehttp/guzzle": "^6.2",
+    "prowriting/prowritingaid.php": "dev-master"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8",
+    "squizlabs/php_codesniffer": "~2.6",
+    "friendsofphp/php-cs-fixer": "~1.12"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": { "Swagger\\Client\\" : "vendor/prowriting/prowritingaid.php/lib/" }
+  },
+  "autoload-dev": {
+    "psr-4": { "Swagger\\Client\\" : "www/vendor/prowriting/prowritingaid.php/test/" }
+  }
+}
