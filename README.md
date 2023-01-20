@@ -1,82 +1,65 @@
-#Integration
+# docker-alpine-wordpress
 
-Please, pay attention that all path and url are related.
-You need change them according to your site.
+This is a very basic WordPress setup using the super tiny Alpine Linux distribution and official Docker images for WordPress and PHP FPM.
 
+## Installation
 
-1. Insert widget on the page
+### Docker
 
-```php
+To use this project you first need Docker installed. It would do you well to learn more about Docker, but these steps will get
+you going fast. The first step of course is to get Docker. You can get Docker from here:  
 
-<?php 
+* MacOS: https://www.docker.com/docker-mac  
+* Windows: https://www.docker.com/docker-windows
+* Other: https://www.docker.com/get-docker
 
-require_once(__DIR__ . '/prowritingaid/vendor/autoload.php');
-$config = require(__DIR__ . '/config.php');
+Once Docker is installed you should be able to run the following from command line (terminal / cmd.exe):  `docker -v`. Congrats
+and welcome to the awesome world of Docker.
 
-?>
-<div id="punctuation-checker">
-    <div class="editor-wrapper has-block-loader">
-        <div contenteditable="true" spellcheck="false" class="editor empty"
-             data-editor
-             data-placeholder="Enter or paste text here to check"
-             data-error=""
-        ></div>
-    </div>
+### Setting up your site
 
-    <div class="controls">
-        <div class="language-wrapper">
-            <label for="pwa-language" class="">Language:</label>
-            <select id="pwa-language" data-language>
-                <?php foreach ($config['languages'] as $langCode => $langName) : ?>
-                    <option value="<?php echo $langCode; ?>">
-                        <?php echo $langName; ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-        </div>
-
-        <button class="check" data-submit>Check</button>
-    </div>
-
-    <div class="pwa-popup-correction" data-popup-correction>
-        <div class="pwa-popup-correction-inner">
-            <div class="pwa-popup-header"></div>
-            <div class="pwa-popup-body"></div>
-            <div class="pwa-popup-footer">
-                <a class="pwa-ignore-button pwa-popup-footer-button" href="#" data-emit-event="ignore">
-                    Ignore
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
+Setting up a site is really easy. Go to any of your project folders and then run the following (replacing my-site with whatever you wish):  
 
 ```
-
-2. Add style
-
-```html
-
-<link href="/assets/dist/style.css" rel="stylesheet">
-
+git clone https://github.com/rheinardkorf/docker-alpine-wordpress.git my-site
+cd my-site
+docker-compose up -d
 ```
 
-3. Add Scripts
+Note: The first time you run `docker-compose` it might take a while to download the Docker images.
 
-```html
+This will spin up a few Docker containers:
 
-<script src="/assets/src/js/jquery.punctuation-checker.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#punctuation-checker').punctuationChecker({
-            api: '/api.php',
-            editorSelector: '[data-editor]',
-            languageSelector: '[data-language]',
-            submitSelector: '[data-submit]',
-            popupCorrectionSelector: '[data-popup-correction]',
-            lineHeight: 18 // px
-        });
-    });
-</script>
+* nginx - Which acts as a proxy for your site and the PHP FPM server.  
+* wordpress - A PHP FPM flavor of the WordPress Docker image.  
+* db - MySQL for serving your WordPress a database.  
+* phpmyadmin - A web interface for your database.  
 
-```
+## URLs
+
+The following URLs will now be available for your project:  
+
+* http://localhost/ -- Your development WordPress site. (You will install WordPress upon first visit).
+* http://localhost:8080/ -- The PHPMyAdmin interface for your database (username: root, password: root)
+
+You can now use your development WordPress site as you would any WordPress site.  
+
+## Project Folder Structure
+
+Inside your primary `my-site` project folder you will see the following:  
+
+* docker-compose.yml -- The Docker configuration for your project.  
+* site.conf -- The nginx configuration for your site.  
+* htdocs/ -- The WordPress files.  
+* themes/ -- A mapping to the WordPress themes folder.
+* plugins/ -- A mapping to the WordPress plugins folder.
+
+## Stopping your project
+
+Running the following will stop all active Docker containers: `docker stop $(docker ps -q)`
+
+## Starting your project again
+
+Make sure you are in your project folder (the one with docker-compose.yml) and run `docker-compose up -d`.
+
+Simple.
