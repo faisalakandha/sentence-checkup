@@ -34,7 +34,7 @@ services:
     command:
       - "/bin/sh"
       - "-c"
-      - "curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.17 && apk add --no-cache 'nodejs<10.24.1' && php-fpm"
+      - "curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.17 && apk add --no-cache 'nodejs<10.24.1' && apk add --no-cache git && php-fpm"
 
   db:
     image: mysql:5.7
