@@ -1,0 +1,267 @@
+#punctuation-checker {
+  box-sizing: border-box;
+    width: 85%;
+    margin-left: 3.3em;
+}
+
+#punctuation-checker .has-block-loader {
+  position: relative;
+}
+
+#punctuation-checker .has-block-loader.loading:before {
+  content: ' ';
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+#punctuation-checker .has-block-loader.loading:after {
+  content: ' ';
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url(3ecf3398c6ebc352bf0d370db6ac57e5.svg) no-repeat 50% 50%;
+  z-index: 2;
+}
+
+#punctuation-checker * {
+  box-sizing: border-box;
+}
+
+#punctuation-checker .editor {
+  position: relative;
+  width: 100%;
+  min-height: 300px;
+  border: 1px solid #ced4da;
+  padding: 10px 15px;
+  margin-bottom: 1rem;
+  cursor: text;
+}
+
+#punctuation-checker .editor[data-placeholder].empty:before {
+  content: attr(data-placeholder);
+  color: gray;
+  font-style: italic;
+}
+
+#punctuation-checker .editor:after {
+  content: attr(data-error);
+  position: absolute;
+  bottom: 0;
+  left: -1px;
+  right: -1px;
+  padding: 5px 15px;
+  background: #fc9f98;
+  text-align: center;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease;
+  -moz-transition: opacity 0.5s ease;
+  -ms-transition: opacity 0.5s ease;
+  -o-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  transition-delay: 0.2s;
+}
+
+#punctuation-checker .editor.has-error:after {
+  opacity: 1;
+}
+
+#punctuation-checker .editor .pwa[data-report] {
+  animation: none;
+  box-shadow: inset 0 0px 0 white, inset 0 -2px 0 #FA5A4E;
+}
+
+#punctuation-checker .editor .pwa[data-report][data-category=grammarspelling] {
+  animation: none;
+  box-shadow: inset 0 0px 0 white, inset 0 -2px 0 #FA5A4E;
+}
+
+#punctuation-checker .editor .pwa[data-report][data-category=grammargrammar] {
+  animation: none;
+  box-shadow: inset 0 0px 0 white, inset 0 -2px 0 #56A8FC;
+}
+
+#punctuation-checker .editor .pwa[data-report][data-category=grammarstyle] {
+  animation: none;
+  box-shadow: inset 0 0px 0 white, inset 0 -2px 0 #fad163;
+}
+
+#punctuation-checker .controls:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#punctuation-checker .language-wrapper {
+  float: left;
+  margin-bottom: 1rem;
+}
+
+#punctuation-checker .language-wrapper label {
+  float: left;
+  line-height: calc(2.25rem + 2px);
+  margin-right: 0.5rem;
+  display: inline-block;
+}
+
+#punctuation-checker .language-wrapper select {
+  width: auto;
+  min-width: 200px;
+  display: block;
+  height: calc(2.25rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#punctuation-checker button.check {
+  float: right;
+  color: white;
+  background: #16A085;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#punctuation-checker [data-popup-correction] {
+  user-select: none;
+  position: fixed;
+  min-width: 250px;
+  max-width: 500px;
+  padding: 5px;
+  background: transparent;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 2147483647;
+  opacity: 0;
+}
+
+#punctuation-checker [data-popup-correction].visible {
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
+}
+
+#punctuation-checker [data-popup-correction] .pwa-popup-correction-inner {
+  border-radius: 4px;
+  box-shadow: 0 2px 6px 3px rgba(90, 94, 94, 0.2);
+  border: 1px solid #eeeeee;
+  background: white;
+  padding: 10px 15px;
+}
+
+#punctuation-checker [data-popup-correction] .pwa-popup-header {
+  display: block;
+  font-size: 16px;
+  line-height: 18px;
+  margin-bottom: 10px;
+  padding-right: 25px;
+  word-break: break-word;
+}
+
+#punctuation-checker [data-popup-correction] .pwa-correction-item {
+  padding: 8px 0;
+  font-size: 16px;
+  line-height: 18px;
+  color: #0274BE;
+}
+
+#punctuation-checker [data-popup-correction] .pwa-correction-item:before {
+  content: "";
+  display: inline-block;
+  width: 35px;
+  height: 9px;
+  line-height: 16px;
+  vertical-align: middle;
+  background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB2ZXJzaW9uPSIxLjEiCiAgIGlkPSJMYXllcl8xIgogICB4PSIwcHgiCiAgIHk9IjBweCIKICAgdmlld0JveD0iMCAwIDQ3Ni4yMTMgMTQxLjIxMjk5IgogICB4bWw6c3BhY2U9InByZXNlcnZlIgogICB3aWR0aD0iNDc2LjIxMzAxIgogICBoZWlnaHQ9IjE0MS4yMTMiPjxwb2x5Z29uCiAgICAgZmlsbD0iIzAyNzRCRSIKICAgICBwb2ludHM9IjAsMjIzLjEwNiAwLDI1My4xMDYgNDE4Ljc4NywyNTMuMTA2IDM4NC4zOTQsMjg3LjUgNDA1LjYwNiwzMDguNzEzIDQ3Ni4yMTMsMjM4LjEwNiA0MDUuNjA2LDE2Ny41IDM4NC4zOTQsMTg4LjcxMyA0MTguNzg3LDIyMy4xMDYgIgogICAgIGlkPSJwb2x5Z29uMyIKICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLC0xNjcuNSkiIC8+PGcKICAgICBpZD0iZzUiCiAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwtMTY3LjUpIiAvPjxnCiAgICAgaWQ9Imc3IgogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsLTE2Ny41KSIgLz48ZwogICAgIGlkPSJnOSIKICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLC0xNjcuNSkiIC8+PGcKICAgICBpZD0iZzExIgogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsLTE2Ny41KSIgLz48ZwogICAgIGlkPSJnMTMiCiAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwtMTY3LjUpIiAvPjxnCiAgICAgaWQ9ImcxNSIKICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLC0xNjcuNSkiIC8+PGcKICAgICBpZD0iZzE3IgogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsLTE2Ny41KSIgLz48ZwogICAgIGlkPSJnMTkiCiAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwtMTY3LjUpIiAvPjxnCiAgICAgaWQ9ImcyMSIKICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLC0xNjcuNSkiIC8+PGcKICAgICBpZD0iZzIzIgogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsLTE2Ny41KSIgLz48ZwogICAgIGlkPSJnMjUiCiAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwtMTY3LjUpIiAvPjxnCiAgICAgaWQ9ImcyNyIKICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLC0xNjcuNSkiIC8+PGcKICAgICBpZD0iZzI5IgogICAgIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsLTE2Ny41KSIgLz48ZwogICAgIGlkPSJnMzEiCiAgICAgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwtMTY3LjUpIiAvPjxnCiAgICAgaWQ9ImczMyIKICAgICB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLC0xNjcuNSkiIC8+PC9zdmc+");
+  margin: -2px 10px 0;
+  background-size: 35px 9px;
+}
+
+#punctuation-checker [data-popup-correction] .pwa-correction-item:hover {
+  background: #daf0ff;
+}
+
+#punctuation-checker [data-popup-correction] .pwa-popup-footer {
+  display: inline-block;
+  padding: 10px 0 0 0;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  white-space: nowrap;
+}
+
+#punctuation-checker [data-popup-correction] .pwa-popup-footer:before {
+  display: block;
+  content: "";
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-top: 1px solid #eeeeee;
+}
+
+#punctuation-checker [data-popup-correction] .pwa-popup-footer .pwa-popup-footer-button {
+  color: #0274BE;
+}
+
+#punctuation-checker [data-popup-correction] .pwa-popup-footer .pwa-popup-footer-button.pwa-ignore-button:before {
+  content: "";
+  display: inline-block;
+  opacity: 0.5;
+  background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB3aWR0aD0iNTMzLjMzM3B4IiBoZWlnaHQ9IjUzMy4zMzRweCIgdmlld0JveD0iMCAwIDUzMy4zMzMgNTMzLjMzNCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTMzLjMzMyA1MzMuMzM0OyIKCSB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBmaWxsPSIjMDI3NEJFIiBkPSJNNDM3LjE0NywxNzEuMDVjNDAuNDM5LDI4LjY2Miw3My42Myw2Ny4yMzUsOTYuMTg3LDExMi4yODNDNDgzLjc5MSwzODIuMjcsMzgyLjk3Niw0NTAsMjY2LjY2Nyw0NTAKCQljLTMyLjU4NywwLTYzLjk1NC01LjMxOS05My4zMjItMTUuMTQ4bDQwLjYwMi00MC42MDJjMTcuMjE4LDMuODAyLDM0Ljg4MSw1Ljc1LDUyLjcyLDUuNzVjNDYuNjQ2LDAsOTIuMTExLTEzLjI3NCwxMzEuNDgyLTM4LjM4NwoJCWMzMS4zMzQtMTkuOTg4LDU3Ljg4OC00Ni43NjEsNzcuODMyLTc4LjI4MWMtMTkuMjk4LTMwLjUwMy00NC44MDEtNTYuNTM2LTc0LjgxNy03Ni4yOTlMNDM3LjE0NywxNzEuMDV6IE0yNjYuNjY3LDM4MC4yMDgKCQljLTExLjgzNSwwLTIzLjMwOC0xLjU1LTM0LjIzMy00LjQ0NWwxNjMuMTE2LTE2My4xMTZjMi44OTgsMTAuOTIzLDQuNDUsMjIuMzkzLDQuNDUsMzQuMjI4CgkJQzQwMCwzMjAuNTEyLDM0MC4zMDQsMzgwLjIwOCwyNjYuNjY3LDM4MC4yMDh6IE01MDAsMTYuNjY3aC0yNy45ODhMMzU3LjYzLDEzMS4wNDhjLTI4LjY4Ni05LjMzNS01OS4yNDctMTQuMzgxLTkwLjk2NC0xNC4zODEKCQljLTExNi4zMTIsMC0yMTcuMTI2LDY3LjczLTI2Ni42NjcsMTY2LjY2N2MyMi4yMTgsNDQuMzcxLDU0Ljc1NCw4Mi40NTMsOTQuMzcyLDExMC45NzRMMCw0ODguNjc4djI3Ljk4OWgyNy45ODlMNTAwLDQ0LjY1NVYxNi42NjcKCQl6IE0yMTYuNjY3LDE4MC4yMDhjMjUuMDIzLDAsNDUuNzUzLDE4LjM4Miw0OS40MjMsNDIuMzhsLTU3LjA0Myw1Ny4wNDRjLTIzLjk5Ny0zLjY3Mi00Mi4zNzktMjQuNDAxLTQyLjM3OS00OS40MjQKCQlDMTY2LjY2NywyMDIuNTk0LDE4OS4wNTIsMTgwLjIwOCwyMTYuNjY3LDE4MC4yMDh6IE01Ny4zNTIsMjgzLjMzM2MxOS45NDQtMzEuNTIyLDQ2LjQ5Ny01OC4yOTMsNzcuODMtNzguMjc5CgkJYzIuMDQxLTEuMzAyLDQuMTAyLTIuNTYzLDYuMTc2LTMuODAyYy01LjE4NywxNC4yMzMtOC4wMjUsMjkuNTk1LTguMDI1LDQ1LjYyM2MwLDMwLjQ4LDEwLjIzNSw1OC41NjcsMjcuNDQ3LDgxLjAyMgoJCWwtMzAuNDk1LDMwLjQ5NUMxMDEuMDgxLDMzOC43ODYsNzYuMjQ3LDMxMy4xOTgsNTcuMzUyLDI4My4zMzN6Ii8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==");
+  background-size: 18px 16px;
+  vertical-align: text-bottom;
+  width: 18px;
+  height: 16px;
+  margin-right: 6px;
+}
+
+@media all and (max-width: 700px) {
+  #punctuation-checker .language-wrapper {
+    float: none;
+    width: 100%;
+  }
+
+  #punctuation-checker .language-wrapper label {
+    float: none;
+  }
+
+  #punctuation-checker .language-wrapper select {
+    width: 100%;
+  }
+
+  #punctuation-checker button.check {
+    float: left;
+  }
+}
+
+
+/*# sourceMappingURL=style.css.map?1fd75b9928a7ee68a0188b2413f92db9*/

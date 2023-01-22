@@ -1,0 +1,27 @@
+{
+  "font_awesome": {
+    "js": "/assets/dist/font_awesome.js?ea5aaaf83cebea9a9d14",
+    "css": "/assets/dist/font_awesome.css?87fe8967ef99bdd4c486c694d5a2024e"
+  },
+  "style": {
+    "js": "/assets/dist/style.js?55cbe9d3c7a6b7be2722",
+    "css": "/assets/dist/style.css?1fd75b9928a7ee68a0188b2413f92db9"
+  },
+  "main": {
+    "js": "/assets/dist/main.js?e8689ea7853e5e3ebda7"
+  },
+  "": {
+    "svg": [
+      "/assets/dist/3ecf3398c6ebc352bf0d370db6ac57e5.svg",
+      "/assets/dist/912ec66d7572ff821749319396470bde.svg"
+    ],
+    "woff2": "/assets/dist/af7ae505a9eed503f8b8e6982036873e.woff2",
+    "woff": "/assets/dist/fee66e712a8a08eef5805a46892932ad.woff",
+    "ttf": "/assets/dist/b06871f281fee6b241d60582ae9369b9.ttf",
+    "eot": "/assets/dist/674f50d287a8c48dc19ba404d20fe713.eot",
+    "js": [
+      "/assets/dist/jquery.js?6c333aec6a4c328e6739",
+      "/assets/dist/bootstrap.js?ef58fee438cd2da2c3b3"
+    ]
+  }
+}
