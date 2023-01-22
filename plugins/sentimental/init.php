@@ -3,11 +3,11 @@
 function ti_custom_javascript()
 {
 ?>
-    <script src="<?php echo plugin_dir_path(__FILE__) ?>/sentilib/assets/src/js/jquery.punctuation-checker.js?<?php time(); ?>"></script>
+    <script src="<?php echo plugin_dir_url(__FILE__) ?>sentilib/assets/src/js/jquery.punctuation-checker.js?<?php time(); ?>"></script>
     <script>
         $(document).ready(function() {
             $('#punctuation-checker').punctuationChecker({
-                api: '/api.php',
+                api: '<?php echo plugin_dir_path(__FILE__) ?>sentilib/api.php',
                 editorSelector: '[data-editor]',
                 languageSelector: '[data-language]',
                 submitSelector: '[data-submit]',
